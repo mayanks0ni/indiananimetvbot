@@ -3,7 +3,7 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const Canvas = require("canvas");
 const fetch = require("node-fetch");
-const PREFIX = ','; 
+const PREFIX = '+'; 
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
@@ -106,4 +106,4 @@ bot.on('message',async message=>{
 	});
 
 
-bot.login('NjQ2MDE1MTk3MDAxMDIzNDg5.XdK-mA.u4NHGAhShZlra3YgZ24gjB1zyYk');
+bot.login(process.env.BOT_TOKEN);
