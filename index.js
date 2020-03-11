@@ -50,7 +50,7 @@ bot.on('guildMemberAdd', async member =>{
 	ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
 
-	ctx.font = "./Segoe Print.ttf";
+	ctx.font = '28px Segoe Print';
 	ctx.fillStyle = '#ffffff';
 	ctx.fillText('Welcome To The Server,', canvas.width / 2.5, canvas.height / 3.5);
 
