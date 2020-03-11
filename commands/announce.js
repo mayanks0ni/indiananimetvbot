@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle('You Don\'t Have Enough Permissions!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
 	let ancmessage;
 	let mchannel = message.mentions.channels.first()
-	if(!ancmessage || !mchannel)return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+announce [channel] [message]\` Or \`+announce [message]\` To Announce In The Channel Used!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	if(!ancmessage)return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+announce [channel] [message]\` Or \`+announce [message]\` To Announce In The Channel Used!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
 	message.delete()
 	if (mchannel) {
 		ancmessage = args.slice(2).join(" ");
