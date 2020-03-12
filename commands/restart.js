@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     const sendRembed = await message.channel.send(rEmbed);
     bot.destroy();
   setTimeout(function(){
-      bot.login('NjQ2MDE1MTk3MDAxMDIzNDg5.Xmn1gw.qfhh0ExwPocIkTkPPgwAAfxJlyk');
+      bot.login(process.env.BOT_TOKEN);
      sendRembed.edit(embed);
      bot.user.setActivity("+help", {type:"LISTENING"});
   }, 5000)
