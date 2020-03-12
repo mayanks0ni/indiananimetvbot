@@ -14,8 +14,11 @@ module.exports.run = async (bot, message, args) => {
 			.setTimestamp()
 		message.channel.send(nomenrole);
 	} else {
-		const mentionedRole = message.guild.roles.cache.find(r => r.name === rolename);
-		message.channel.send(`${mentionedRole}`);
+		const mentionedRole = message.guild.roles.cache.find(r => r.name === rolename)
+		mentionedRole.setMentionable(true)
+		await message.channel.send(`${mentionedRole}`)
+		mentionedRole.setMentionable(false)
+
 	}
 };
 
