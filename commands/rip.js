@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
   const user = message.mentions.users.first();
   const user2 = user.displayAvatarURL({format: 'png', dynamic: true, size: 1024})
 
-  if(!user2) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used \`+rip [user]\`!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+  if(!user) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used \`+rip [user]\`!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
 
    const background = await Canvas.loadImage(`https://cdn.discordapp.com/attachments/564520348821749766/687972262510329856/rest-in-peace-rip-headstone-blank-template-imgflip-53245711.png`)
    
