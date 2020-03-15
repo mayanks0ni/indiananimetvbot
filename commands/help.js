@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
             .addField('announce [channel] [text]', 'A command to announce messages!')
             .addField('dm [user]', 'Directly send the mentioned user message through the bot!')
             .addField('mentionrole [rolename]', 'Mentions the role by specifying only its name!')
-.addField('role [user] [role]', A Command To Add A Role To The Mentioned User!')0
+.addField('role [user] [role]', 'A Command To Add A Role To The Mentioned User!')0
 .addField('takerole [user] [role]', 'A Command To Take Role From The Mentioned User!')
 .addField('warn [user] [reason]', 'A Command To Warn The Mentioned User!')
 .addField('rolecolor [color] [role name]', 'A Command To Change The Color The Role!')
