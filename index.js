@@ -42,7 +42,7 @@ bot.on('guildMemberAdd', async member =>{
 	const ctx = canvas.getContext('2d');
 
 
-	const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/645692503902781480/680017295019737118/UyWNCe.jpg');
+	const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/564520348821749766/689123263464341680/welcome-image.png');
 
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
