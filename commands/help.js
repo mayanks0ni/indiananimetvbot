@@ -25,6 +25,7 @@ module.exports.run = async (bot, message, args) => {
             .addField('⚙️ Admin Only Commands ⚙️', 'React With ⚙️ To Get More Info!')
             .addField('🖲️ Other Commands 🖲️', 'React With 🖲️ To Get More Info!')
             .addField('🔞 NSFW Commands 🔞', 'React With 🔞 To Get More Info!')
+            .setDescription('Get More Info Of Commands With Exmamples On My Website! \n http://indiananimetvbot.herokuapp.com/index.html')
             .setFooter('IAt Bot')
             .setTimestamp()
             .setColor(0xff47bf)
