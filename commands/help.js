@@ -116,11 +116,11 @@ module.exports.run = async (bot, message, args) => {
 
                 if (reaction.emoji.name === '👤') {
                     helpmsg.edit(userhelpcmd);
-                    helpmsg.reactions.cache.clearAll();
+                    helpmsg.reactions.removeAll();
                 }
                 if (reaction.emoji.name === '🛠️') {
                     helpmsg.edit(moderationcmd);
-                    helpmsg.reactions.cache.clearAll();
+                    helpmsg.reactions.removeAll();
                 }
                 if (reaction.emoji.name === '⚙️') {
                     helpmsg.edit(adminonlycmd);
@@ -128,11 +128,11 @@ module.exports.run = async (bot, message, args) => {
                 }
                 if (reaction.emoji.name === '🖲️') {
                     helpmsg.edit(othercmds);
-                    helpmsg.reactions.cache.clearAll();
+                    helpmsg.reactions.removeAll();
                 }
                 if (reaction.emoji.name === '🔞') {
                     helpmsg.edit(nsfwcmd);
-                    helpmsg.reactions.cache.clearAll();
+                    helpmsg.reactions.removeAll();
                 }
             })
 
