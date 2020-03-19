@@ -124,7 +124,7 @@ module.exports.run = async (bot, message, args) => {
                 }
                 if (reaction.emoji.name === '⚙️') {
                     helpmsg.edit(adminonlycmd);
-                    helpmsg.reactions.cache.clearAll();
+                    helpmsg.reactions.removeAll();
                 }
                 if (reaction.emoji.name === '🖲️') {
                     helpmsg.edit(othercmds);
