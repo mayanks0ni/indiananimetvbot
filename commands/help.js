@@ -66,6 +66,15 @@ module.exports.run = async (bot, message, args) => {
             .addField('fact', 'Sends a random fact!')
             .addField('spoiler', 'Makes The Given Text In Spoiler Form!')
             .addField('wallpaper', 'Command to get a random wallpaper!')
+.addField('pokemon [name]', 'A Command To Get The Info Of The Pokémon!')
+.addField('insult', 'A Command To Get A Roast Message!')
+.addField('cmm [text]', 'A Command To Get A Change My Mind Image For The Provided Text!')
+.addField('tweet [username] [text]', 'A Command To Tweet Through The Provided Username!')
+.addField('trumptweet [text]','A Command To Get A Trump Tweet Image For The Provided Text!')
+.addField('trash [user]','A Command To Get A Trash Waifu Image Of Yourself Or The Mentioned User!')
+.addField('captcha [text]', 'A Command To Get A Captcha Image Of Yourself With The Desired Text!')
+.addField('rip [user]', 'A Command To Get The Rip Image Of The Mentioned User!')
+.addField('urban [word]', 'A Command To Get The Definition Of Word From Urban Dictionary!')
             .setColor(0xff47bf)
             .setFooter('IAt Bot')
             .setTimestamp()
@@ -86,6 +95,8 @@ module.exports.run = async (bot, message, args) => {
             .setAuthor('⚙️ Admin Only Commands ⚙️')
             .addField('uptime', 'Command To View the Uptime Of The Bot!')
             .addField('setstatus [type] [status]', 'A Command To Set The Status Of The Bot!')
+            .addField('restart', 'A Command To Restart The Bot!')
+            .addField('shutdown', 'A Command To Shutdown The Bot!')
             .setColor(0xff47bf)
             .setFooter('IAt Bot')
             .setTimestamp()
@@ -105,23 +116,23 @@ module.exports.run = async (bot, message, args) => {
 
                 if (reaction.emoji.name === '👤') {
                     helpmsg.edit(userhelpcmd);
-                    helpmsg.clearReactions();
+                    helpmsg.reactions.clearAll();
                 }
                 if (reaction.emoji.name === '🛠️') {
                     helpmsg.edit(moderationcmd);
-                    helpmsg.clearReactions();
+                    helpmsg.reactions.clearAll();
                 }
                 if (reaction.emoji.name === '⚙️') {
                     helpmsg.edit(adminonlycmd);
-                    helpmsg.clearReactions();
+                    helpmsg.reactions.clearAll();
                 }
                 if (reaction.emoji.name === '🖲️') {
                     helpmsg.edit(othercmds);
-                    helpmsg.clearReactions();
+                    helpmsg.reactions.clearAll();
                 }
                 if (reaction.emoji.name === '🔞') {
                     helpmsg.edit(nsfwcmd);
-                    helpmsg.clearReactions();
+                    helpmsg.reactions.clearAll();
                 }
             })
 
