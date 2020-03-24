@@ -37,7 +37,7 @@ bot.on('ready', () =>{
 
 bot.on('guildMemberAdd', async member =>{
 	if(member.guild.id === "691659454852104232"){
-		welc = member.guild.channels.cache.get("691663038146936852")
+		const welc = member.guild.channels.cache.get("691663038146936852")
 		if(!welc) retrun;
 		const canvas = Canvas.createCanvas(700, 250);
 	const ctx = canvas.getContext('2d');
@@ -107,12 +107,20 @@ bot.on('guildMemberAdd', async member =>{
 })
 
 bot.on('guildMemberRemove', member =>{
+	if(member.guild.id === "691659454852104232"){
+		const welc1 = member.guild.channels.cache.get("691663038146936852")
+		if(!welc1) retrun;
+	const leaveembed = new Discord.MessageEmbed()
+	.setDescription(`${member}, has left the server 🙁. Hope you'll be back soon!`)
+        .setColor(0x3dffcf)
+	welc1.send(leaveembed);
+	}else{
 	const channel1 = member.guild.channels.cache.find(channel => channel.name === "〢join-leave");
 	if(!channel1) return;
 	const leaveembed = new Discord.MessageEmbed()
 	.setDescription(`${member}, has left the server 🙁. Hope you'll be back soon!`)
         .setColor(0x3dffcf)
-	channel1.send(leaveembed);
+	channel1.send(leaveembed);}
 })
 
 bot.on('message',async message=>{
