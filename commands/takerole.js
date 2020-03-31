@@ -13,15 +13,13 @@ module.exports.run = async (bot, message, args) => {
       if (!usertotake.roles.cache.find(r => r.name === rolename1)) {
             return message.channel.send(new Discord.MessageEmbed().setTitle(`${usertotake.displayName} Does Not Have ${rolename1} Role!`).setColor(0xff0000).setFooter('IAT Bot').setTimestamp());
       }
-          await usertotake.roles.remove(role132).catch(err=> {
-               console.error(err);
-            });
-            const success = new Discord.MessageEmbed()
-                .setTitle(`Successfully Removed ${rolename1} Role From User ${usertotake.displayName}!`)
-                .setFooter('IAT Bot')
-                .setColor("GREEN")
-                message.channel.send(success); 
-    
+    try{
+          await usertotake.roles.remove(role132)
+      } catch (err){
+           console.log(err);
+           return message.channel.send(new Discord.MessageEmbed().setTitle("Looks Like I Don\'t Have Permissions To Remove That Role!\n I Can\'t Remove Role That Are Above My Role!").setColor(0xff0000).setTimestamp().setFooter("IAT Bot")) 
+      }
+    message.channel.send(new Discord.MessageEmbed().setTitle("✅ Successfully Removed Role!").addField("**Member**", `${usertotake.displayName}`).addField("**Role Removed**", `${rolename1}`).setFooter('IAT Bot').setColor("GREEN")); 
 };
 
 module.exports.config = {
