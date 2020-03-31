@@ -22,12 +22,14 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('IAT Bot')
             message.channel.send(hasrole);
         } else {
-          await usertoadd.roles.add(role12).catch(err => console.error(err));
-            const success = new Discord.MessageEmbed()
-                .setTitle(`Successfully Added Role ${rolename} To ${usertoadd.displayName}!`)
-                .setFooter('IAT Bot')
-                .setColor("GREEN")
-            message.channel.send(success);
+            try{
+          await usertoadd.roles.add(role12)
+      } catch(err){
+           console.log(err)
+           return message.channel.send(new Discord.MessageEmbed().setTitle("Looks Like I Don\'t Have Permissions To Add That Role!\n I Can\'t Add Role That Are Above My Role!").setColor(0xff0000).setTimestamp().setFooter("IAT Bot"))
+
+    }
+    message.channel.send(new Discord.MessageEmbed().setTitle("✅ Successfully Added Role!").addField("**Member**", `${usertoadd.displayName}`).addField("**Role Added**", `${rolename}`).setFooter('IAT Bot').setColor("GREEN"));
         }
     }
 };
