@@ -16,6 +16,7 @@ module.exports.run = async (bot, message, args) => {
             .setTimestamp()
         message.channel.send(noname);
     } else {
+        try{
         const pokeinfo = new Discord.MessageEmbed()
             .setAuthor(`Info Of ${name}`, message.author.displayAvatarURL)
             .addField('Name', res.name)
@@ -34,6 +35,10 @@ module.exports.run = async (bot, message, args) => {
             .setThumbnail(res.sprites.normal)
             .setColor("GOLD")
         message.channel.send(pokeinfo);
+    } catch(e){
+    	console.log(e);
+    	return message.channel.send(new Discord.MessageEmbed().setTitle("Error! Cannot Find That Pokemon!").setColor(0xff0000).setTimestamp().setFooter("IAT Bot"))
+    }
     }
 };
 
