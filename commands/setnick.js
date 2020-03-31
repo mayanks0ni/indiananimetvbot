@@ -15,8 +15,13 @@ module.exports.run = async (bot, message, args) => {
 				.setTimestamp()
 			message.channel.send(nomem);
 		} else {
+			try{
 			await member12.setNickname(nickname)
 			return message.channel.send(new Discord.MessageEmbed().setTitle(`Successfully Changed ${member12.displayName} To ${nickname}!`).setColor("RANDOM").setFooter('IAT Bot').setTimestamp());
+		} catch(e){
+			console.log(e);
+			return message.channel.send(new Discord.MessageEmbed().setTitle("Error! Cannot Change The Nickname Of That User! \n I Can't Change The Nickname Of Someone With Higher Role Than Me!").setColor(0xff0000).setTimestamp().setFooter("IAT Bot"))
+		}
 		}
 	}
 };
