@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(0xff0000)
         message.channel.send(noperms);
     } else {
-        const type1 = args[1]
+        const type1 = args[1].toUpperCase();
         const status1 = args.slice(2).join(" ");
         if(!type1 || !status1) return message.channel.send(new Discord.MessageEmbed().setTitle("This Command Is Used LIke This \`+setstatus [type (In Capital Letters)] [status]\`").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
         bot.user.setActivity(status1, { type: type1 });
