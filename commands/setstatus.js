@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    if (!message.member.permissions.has("MANAGE_MESSAGES")) {
+    if (!message.member.permissions.has("ADMINISTRATOR")) {
         const noperms = new Discord.MessageEmbed()
             .setTitle('You Don\'t Have Enough Permissions!')
             .setFooter('IAT Bot')
