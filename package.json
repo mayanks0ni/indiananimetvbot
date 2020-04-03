@@ -29,6 +29,7 @@
     "sqlite3": "^4.1.1",
     "superagent": "^5.2.2",
     "urban": "^0.3.2",
-    "ytdl-core": "^2.0.1"
+    "ytdl-core": "^2.0.1",
+    "ytsearcher": "1.2.2"
   }
 }
