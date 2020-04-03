@@ -4,7 +4,7 @@ const ytdl = require("ytdl-core");
 module.exports.run = async(bot, message, args) => {
   if (message.member.voice.channel) {
       const connection = await message.member.voice.channel.join();
-      const dispatcher = connection.play(ytdl(`https://www.youtube.com/watch?v=KBtk5FUeJbk`, {'format': 'bestaudio',
+      const dispatcher = connection.play(ytdl(`https://www.youtube.com/watch?v=PT2_F-1esPk`, {'format': 'bestaudio',
     'outtmpl': './Data/%(title)s.%(ext)s',
     'restrictfilenames': true,
     'skip_download': 'no',
