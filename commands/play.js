@@ -28,17 +28,7 @@ module.exports.run = async(bot, message, args) => {
     'default_search': 'auto',
     'source_address': '0.0.0.0',
     'usenetrc': true}));
-    const songI = {
-      title: result.first.title,
-      url: result.first.url,
-      thumbnail: result.first.thumbnails.high,
-      channel: result.first.channelTitle
-    }
-    const serverQueue = message.bot.queue.get(message.guild.id);
-    if(serverQueue) {
-      message.bot.queue.push(songI);
-      message.channel.send("Song Queued!");
-    } else{
+
     const songInfo = new Discord.MessageEmbed()
     .setTitle("Playing Song!")
     .addField("**Title**", result.first.title)
@@ -52,7 +42,7 @@ module.exports.run = async(bot, message, args) => {
         dispatcher.destroy();
         message.member.voice.channel.leave();
         console.log("left vc");
-      })}
+      })
     } else {
       message.reply('You need to join a voice channel first!');
     }
