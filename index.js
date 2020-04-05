@@ -169,7 +169,7 @@ function play(guild, queueSong) {
 	  if (!queueSong) {
 	    serverQueue.voiceChannel.leave();
 	    queue.delete(guild.id);
-      message.channel.send(new Discord.MessageEmbed().setTitle("I Left The Voice Channel As There Weren\'t Any Songs!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+            serverQueue.textChannel.send(new Discord.MessageEmbed().setTitle("I Left The Voice Channel As There Weren\'t Any Songs!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
 	    return;
 	  }
 	  const dispatcher = serverQueue.connection
