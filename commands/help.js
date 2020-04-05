@@ -120,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
         await helpmsg.react(`🔞`);
 
         const filter = (reaction, user) => {
-            return ['👤', '🛠️', '⚙️', '🖲️', '🔞'].includes(reaction.emoji.name) && user.id === message.author.id;
+            return ['👤', '🛠️', '⚙️', '🖲️', '🔞', '🎵'].includes(reaction.emoji.name) && user.id === message.author.id;
         };
         helpmsg.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
             .then(collected => {
@@ -140,6 +140,10 @@ module.exports.run = async (bot, message, args) => {
                 }
                 if (reaction.emoji.name === '🖲️') {
                     helpmsg.edit(othercmds);
+                    helpmsg.reactions.removeAll();
+                }
+                if (reaction.emoji.name === '🎵') {
+                    helpmsg.edit(musiccmd);
                     helpmsg.reactions.removeAll();
                 }
                 if (reaction.emoji.name === '🔞') {
