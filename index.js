@@ -4,6 +4,22 @@ const fs = require("fs");
 const Canvas = require("canvas");
 const fetch = require("node-fetch");
 const PREFIX = '+'; 
+const queue = new Map();
+const ytdl = require("ytdl-core");
+const opts = {
+    'format': 'bestaudio/best',
+    'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+    'restrictfilenames': true,
+    'noplaylist': true,
+    'nocheckcertificate': true,
+    'ignoreerrors': false,
+    'logtostderr': false,
+    'quiet': true,
+    'no_warnings': true,
+    'default_search': 'auto',
+    'source_address': '0.0.0.0',
+    'usenetrc': true
+};
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
@@ -144,9 +160,27 @@ bot.on('message',async message=>{
 	if (!message.content.startsWith(PREFIX)) return;
         if(message.channel.type === "dm") return; 
 	let commandfile = bot.commands.get(cmd.slice(PREFIX.length)) || bot.commands.get(bot.aliases.get(cmd.slice(PREFIX.length)))
-        if(commandfile) commandfile.run(bot,message,args);}
+        if(commandfile) commandfile.run(bot, message, args, queue, play);}
 	}
 	});
 
+function play(guild, queueSong) {
+	  const serverQueue = queue.get(guild.id);
+	  if (!queueSong) {
+	    serverQueue.voiceChannel.leave();
+	    queue.delete(guild.id);
+      message.channel.send(new Discord.MessageEmbed().setTitle("I Left The Voice Channel As There Weren\'t Any Songs!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	    return;
+	  }
+	  const dispatcher = serverQueue.connection
+	    .play(ytdl(queueSong.url, opts))
+	    .on("finish", () => {
+	      serverQueue.songs.shift();
+	      play(guild, serverQueue.songs[0]);
+	    })
+	    .on("error", error => console.error(error));
+	  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
+	  serverQueue.textChannel.send(new Discord.MessageEmbed().setAuthor(`Started Playing`, `https://cdn.discordapp.com/attachments/564520348821749766/696332404549222440/4305809_200x130..gif`).addField("**Title**", `${queueSong.title}`).addField("**Channel Name**", `${queueSong.channel}`).addField("**Requested By**", `${queueSong.requestedby}`).setThumbnail(queueSong.thumbnail).setFooter("IAT Bot").setTimestamp().setColor("GREEN"));
+    }
 
 bot.login(process.env.BOT_TOKEN);
