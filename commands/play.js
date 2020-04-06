@@ -30,6 +30,7 @@ if(!serverQueue) {
       volume: 5,
       playing: true
     };
+  message.channel.send(new Discord.MessageEmbed().setTitle(`✅ Connected To \`${message.member.voice.channel.name}\`! ✅`).setColor(0xff008b).setFooter("IAT Bot").setTimestamp());
   message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `${result.first.title}`).addField("**Channel Name**", `${result.first.channelTitle}`).addField("**Requested By**", `${message.author.tag}`).setColor("YELLOW").setFooter("IAT Bot").setThumbnail(result.first.thumbnails.high.url).setTimestamp());
   queueContruct.songs.push(queueSong)
   queue.set(message.guild.id, queueContruct);
