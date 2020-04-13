@@ -186,7 +186,7 @@ function play(guild, queueSong) {
         title = "None";
       }
 	  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-	  serverQueue.textChannel.send(new Discord.MessageEmbed().setAuthor(`Started Playing`, `https://cdn.discordapp.com/attachments/564520348821749766/696332404549222440/4305809_200x130..gif`).addField("**Title**", `${queueSong.title}`).addField("**Channel Name**", `${queueSong.channel}`).addField("**Requested By**", `${queueSong.requestedby}`).addField("**Upcoming**", `${title}`).setThumbnail(queueSong.thumbnail).setFooter("IAT Bot").setTimestamp().setColor("GREEN"));
+	  serverQueue.textChannel.send(new Discord.MessageEmbed().setAuthor(`Started Playing`, `https://cdn.discordapp.com/attachments/564520348821749766/696332404549222440/4305809_200x130..gif`).addField("**Title**", `**[${queueSong.title}](${queueSong.url})**`).addField("**Channel Name**", `${queueSong.channel}`).addField("**Duration**", `${queueSong.duration}`).addField("**Requested By**", `${queueSong.requestedby}`).addField("**Upcoming**", `${title}`).setThumbnail(queueSong.thumbnail).setFooter("IAT Bot").setTimestamp().setColor("GREEN"));
     }
 
 bot.login(process.env.BOT_TOKEN);
