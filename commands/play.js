@@ -13,13 +13,19 @@ module.exports.run = async(bot, message, args, queue, play) => {
   console.log(result.first);
   if (message.member.voice.channel) {
   const serverQueue = queue.get(message.guild.id);
+  const info1 = await ytdl.getInfo(result.first.url)
+  var date = new Date(0);
+  date.setSeconds(info1.length_seconds);
+  var timeString = date.toISOString().substr(11, 8);
+  console.log(timeString);
 
   const queueSong = {
       title: result.first.title,
       url: result.first.url,
       thumbnail: result.first.thumbnails.high.url,
       channel: result.first.channelTitle,
-      requestedby: message.author.tag
+      requestedby: message.author.tag,
+      duration: timeString
   }
 if(!serverQueue) {
   const queueContruct = {
@@ -30,8 +36,8 @@ if(!serverQueue) {
       volume: 5,
       playing: true
     };
-  message.channel.send(new Discord.MessageEmbed().setTitle(`✅ Connected To \`${message.member.voice.channel.name}\`! ✅`).setColor(0xff008b).setFooter("IAT Bot").setTimestamp());
-  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `${result.first.title}`).addField("**Channel Name**", `${result.first.channelTitle}`).addField("**Requested By**", `${message.author.tag}`).setColor("YELLOW").setFooter("IAT Bot").setThumbnail(result.first.thumbnails.high.url).setTimestamp());
+    message.channel.send(new Discord.MessageEmbed().setTitle(`✅ Connected To \`${message.member.voice.channel.name}\`! ✅`).setColor(0xff008b).setFooter("IAT Bot").setTimestamp());
+  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).addField("**Channel Name**", `${result.first.channelTitle}`).addField("**Duration**", `${timeString}`).addField("**Requested By**", `${message.author.tag}`).setColor("YELLOW").setFooter("IAT Bot").setThumbnail(result.first.thumbnails.high.url).setTimestamp());
   queueContruct.songs.push(queueSong)
   queue.set(message.guild.id, queueContruct);
   try{
@@ -45,7 +51,7 @@ if(!serverQueue) {
    message.channel.send(`\`${err}\``);
  }
 } else {
-  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `${result.first.title}`).addField("**Channel Name**", `${result.first.channelTitle}`).addField("**Requested By**", `${message.author.tag}`).setColor("YELLOW").setThumbnail(result.first.thumbnails.high.url).setFooter("IAT Bot").setTimestamp());
+  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).addField("**Channel Name**", `${result.first.channelTitle}`).addField("**Duration**", `${timeString}`).addField("**Requested By**", `${message.author.tag}`).setColor("YELLOW").setThumbnail(result.first.thumbnails.high.url).setFooter("IAT Bot").setTimestamp());
   serverQueue.songs.push(queueSong);
     }
     } else {
