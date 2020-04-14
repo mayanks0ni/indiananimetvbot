@@ -52,41 +52,6 @@ bot.on('ready', () =>{
 });
 
 bot.on('guildMemberAdd', async member =>{
-	if(member.guild.id === "691659454852104232"){
-		const welc = member.guild.channels.cache.get("691663038146936852")
-		if(!welc) retrun;
-		const canvas = Canvas.createCanvas(700, 250);
-	const ctx = canvas.getContext('2d');
-
-
-	const background = await Canvas.loadImage('https://cdn.discordapp.com/attachments/564520348821749766/689123263464341680/welcome-image.png');
-
-	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-	ctx.strokeStyle = '#74037b';
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-
-	ctx.font = '28px Segoe Print';
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Welcome To The Server,', canvas.width / 2.5, canvas.height / 3.5);
-
-
-	
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
-
-	ctx.beginPath();
-	ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-	ctx.closePath();
-	ctx.clip();
-
-	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({format:'png', dynamic:true, size:1024}));
-	ctx.drawImage(avatar, 25, 25, 200, 200);
-
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-          welc.send(`<@${member.id}> Aao Apna Hi Ghar Samjho!`, attachment);
-	}else{
 	const channel = member.guild.channels.cache.find(channel => channel.name === "〢join-leave");
 	if(!channel) return;
 	const canvas = Canvas.createCanvas(700, 250);
@@ -119,24 +84,16 @@ bot.on('guildMemberAdd', async member =>{
 	ctx.drawImage(avatar, 25, 25, 200, 200);
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-          channel.send(`<@${member.id}> Welcome To ${member.guild.name}!`, attachment); }
+          channel.send(`<@${member.id}> Welcome To ${member.guild.name}!`, attachment); 
 })
 
 bot.on('guildMemberRemove', member =>{
-	if(member.guild.id === "691659454852104232"){
-		const welc1 = member.guild.channels.cache.get("691663038146936852")
-		if(!welc1) retrun;
-	const leaveembed = new Discord.MessageEmbed()
-	.setDescription(`${member}, has left the server 🙁. Hope you'll be back soon!`)
-        .setColor(0x3dffcf)
-	welc1.send(leaveembed);
-	}else{
 	const channel1 = member.guild.channels.cache.find(channel => channel.name === "〢join-leave");
 	if(!channel1) return;
 	const leaveembed = new Discord.MessageEmbed()
 	.setDescription(`${member}, has left the server 🙁. Hope you'll be back soon!`)
         .setColor(0x3dffcf)
-	channel1.send(leaveembed);}
+	channel1.send(leaveembed);
 })
 
 bot.on('message',async message=>{
