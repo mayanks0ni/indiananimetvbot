@@ -104,7 +104,7 @@ bot.on('message',async message=>{
        message.channel.send(`${menrole}`);
 	}}else{
 		if(message.author.bot || message.channel.type === "dm") return;
-		if (message.channel.id === "684369914810597376")) {
+		if (message.channel.id === "684369914810597376") {
 		let msg = message.content
 		const url = `https://some-random-api.ml/chatbot?message=${msg}`;
             let res; 
