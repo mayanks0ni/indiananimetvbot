@@ -9,7 +9,7 @@
   "author": "SpideY",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.1.0",
+   "@discordjs/opus": "^0.1.0",
     "canvas": "^2.6.1",
     "discord": "^0.8.2",
     "discord.js": "^12.0.2",
@@ -21,6 +21,7 @@
     "ms": "^2.1.2",
     "node-fetch": "^2.6.0",
     "node-gyp": "^6.1.0",
+    "node-server-screenshot": "^0.2.4",
     "novelcovid": "^1.0.9",
     "nsfwjs": "^2.1.0",
     "opusscript": "0.0.7",
@@ -29,7 +30,8 @@
     "sqlite3": "^4.1.1",
     "superagent": "^5.2.2",
     "urban": "^0.3.2",
+    "webshot": "^0.18.0",
     "ytdl-core": "^2.0.1",
-    "ytsearcher": "1.2.2"
+    "ytsearcher": "^1.2.2"
   }
 }
