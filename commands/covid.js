@@ -1,4 +1,4 @@
-const covid = require("novelcovid");
+const covid = require("covidtracker");
 const Discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
