@@ -25,6 +25,7 @@
     "node-server-screenshot": "^0.2.4",
     "nsfwjs": "^2.1.0",
     "opusscript": "0.0.7",
+    "puppeteer": "2.1.1",
     "random-puppy": "^1.1.0",
     "relevant-google": "^1.0.0",
     "sqlite3": "^4.1.1",
