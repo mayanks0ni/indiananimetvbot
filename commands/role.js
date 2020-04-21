@@ -22,6 +22,7 @@ module.exports.run = async (bot, message, args) => {
                 .setFooter('IAT Bot')
             message.channel.send(hasrole);
         } else {
+if(!message.guild.roles.cache.find(r => r.name === rolename) return message.channel.send(new Discord.MessageEmbed().setTitle("Couldn\'t Find That Role! (Type The Roles Exact Same Name!)").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
             try{
           await usertoadd.roles.add(role12)
       } catch(err){
