@@ -25,7 +25,6 @@ module.exports.run = async (bot, message, args) => {
  .setTimestamp()
 
  message.channel.send(warnEmbed).then(m => m.delete({ timeout: 5000 }))
- warnChannel.send(warnEmbed);
  user.send(warnEmbed);
  var d = new Date()
  var date = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
