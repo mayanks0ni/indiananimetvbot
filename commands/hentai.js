@@ -7,18 +7,18 @@ module.exports.run = async (bot, message, args) => {
       .query({ type: 'hentai_anal' })
       .end((err, response) => {
         const hentai = new Discord.MessageEmbed()
-          .setAuthor(`Hentai Images for ${message.author.username}!`)
+          .setAuthor(`Hentai Images/GIF for ${message.author.username}!`)
           .setImage(response.body.message)
           .setTimestamp()
           .setColor("RANDOM")
-          .setFooter('IAT Bot')
+          .setFooter(message.guild.me.displayName)
         message.channel.send(hentai);
       });
   } else {
     const notnsfw = new Discord.MessageEmbed()
-      .setTitle('This channel is not a nsfw channel!!')
+      .setDescription('**This channel is not a NSFW channel!**')
       .setTimestamp()
-      .setFooter('IAT Bot')
+      .setFooter(message.guild.me.displayName)
       .setColor(0xfa0202)
     message.channel.send(notnsfw);
   }

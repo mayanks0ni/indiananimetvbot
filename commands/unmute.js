@@ -1,11 +1,11 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("You Don\'t Have Enough Permissions!").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
+	if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("You Don\'t Have Enough Permissions!").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
  
     let member = message.mentions.members.first();
-    if(!member) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used Like This \`+unmute [member] [reason]\`").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
-    if(!member.roles.cache.find(r => r.name === "Muted")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("That User Is Already Unmuted!").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
+    if(!member) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used Like This \`+unmute [member] [reason]\`").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
+    if(!member.roles.cache.find(r => r.name === "Muted")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("That User Is Already Unmuted!").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
     let reason = args.slice(2).join(" ");
 
     let muterole = message.guild.roles.cache.find(muterole => muterole.name === "Muted");
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     .addField(`**Moderator**`, `${message.author.tag}`)
     .addField(`**Reason**`, `${reason || "None"}`)
     .setColor(0x00ff90)
-    .setFooter("IAT Bot")
+    .setFooter(message.guild.me.displayName)
     .setTimestamp()
     message.channel.send(mEmbed);
 }

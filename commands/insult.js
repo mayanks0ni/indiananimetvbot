@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     const insultembed = new Discord.MessageEmbed()
         .setTitle(res.insult)
         .setColor("RANDOM")
-        .setFooter('IAT Bot')
+        .setFooter(message.guild.me.displayName)
         .setTimestamp()
     message.channel.send(insultembed);
 };

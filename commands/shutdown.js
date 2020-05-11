@@ -1,9 +1,9 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-   if(!message.author.id === "516247416878530560") return message.channel.send(new Discord.MessageEmbed().setTite("You Are Not The Bot Owner!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+   if(!message.author.id === "516247416878530560") return message.channel.send(new Discord.MessageEmbed().setTite("You Are Not The Bot Owner!").setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 
-    await message.channel.send(new Discord.MessageEmbed().setTitle("Bot Is Shutting Down...").setColor("GREEN").setTimestamp().setFooter("IAT Bot"));
+    await message.channel.send(new Discord.MessageEmbed().setTitle("Bot Is Shutting Down...").setColor("GREEN").setTimestamp().setFooter(message.guild.me.displayName));
     process.exit();
 
 };

@@ -12,11 +12,11 @@ module.exports.run = async (bot, message, args) => {
         const noname = new Discord.MessageEmbed()
             .setTitle("You Need To Search For An Pokemon!!")
             .setColor(0xff0000)
-            .setFooter("IAT Bot")
+            .setFooter(message.guild.me.displayName)
             .setTimestamp()
         message.channel.send(noname);
-    } else {
-        try{
+    } else { 
+    	try{
         const pokeinfo = new Discord.MessageEmbed()
             .setAuthor(`Info Of ${name}`, message.author.displayAvatarURL)
             .addField('Name', res.name)
@@ -37,8 +37,9 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send(pokeinfo);
     } catch(e){
     	console.log(e);
-    	return message.channel.send(new Discord.MessageEmbed().setTitle("Error! Cannot Find That Pokemon!").setColor(0xff0000).setTimestamp().setFooter("IAT Bot"))
+    	return message.channel.send(new Discord.MessageEmbed().setTitle("Error! Cannot Find That Pokemon!").setColor(0xff0000).setTimestamp().setFooter(message.guild.me.displayName))
     }
+
     }
 };
 

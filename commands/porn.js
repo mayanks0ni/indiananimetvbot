@@ -11,14 +11,14 @@ module.exports.run = async (bot, message, args) => {
           .setImage(response.body.message)
           .setTimestamp()
           .setColor("RANDOM")
-          .setFooter('IAT Bot')
+          .setFooter(message.guild.me.displayName)
         message.channel.send(porn);
       });
   } else {
     const notnsfw = new Discord.MessageEmbed()
       .setTitle('This channel is not a nsfw channel!!')
       .setTimestamp()
-      .setFooter('IAT Bot')
+      .setFooter(message.guild.me.displayName)
       .setColor(0xfa0202)
     message.channel.send(notnsfw);
   }

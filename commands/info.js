@@ -6,7 +6,6 @@ module.exports.run = async (bot, message, args) => {
         .addField('Prefix', '+')
         .addField('Version', '1.0.0')
         .addField('Owner', '**Spide¥#6125**')
-        .addField('Website','(Click Here To View The Website!)[http://indiananimetvbot.herokuapp.com/index.html#]')
         .setColor("RANDOM")
         .setDescription('I am a bot programmed by SpideY!')
     message.channel.send(Infoembed)

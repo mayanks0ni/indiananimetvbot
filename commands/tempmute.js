@@ -2,14 +2,14 @@ const Discord = require("discord.js");
 const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("You Don\'t Have Enough Permissions!").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
+	if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("You Don\'t Have Enough Permissions!").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
     let time = args[2];
     let member = message.mentions.members.first();
     let reason = args.slice(3).join(" ");
 
-    if(!time || !member) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used Like This \`+tempmute [member] [duration (1m/1h/1d)] [reason]\`").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
+    if(!time || !member) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used Like This \`+tempmute [member] [duration (1m/1h/1d)] [reason]\`").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
     let muterole = message.guild.roles.cache.find(muterole => muterole.name === "Muted");
-    if(member.roles.cache.find(r => r.name === "Muted")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("That User Is Already Muted!").setFooter("IAT Bot").setColor(0xff0000).setTimestamp());
+    if(member.roles.cache.find(r => r.name === "Muted")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("That User Is Already Muted!").setFooter(message.guild.me.displayName).setColor(0xff0000).setTimestamp());
     if(!muterole) {
     	try{
     	 muterole = await message.guild.roles.create({
@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
     .addField(`**Moderator**`, `${message.author.tag}`)
     .addField(`**Reason**`, `${reason || "None"}`)
     .setColor(0x00ff90)
-    .setFooter("IAT Bot")
+    .setFooter(message.guild.me.displayName)
     .setTimestamp()
     message.channel.send(mEmbed);
 
@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, args) => {
       const mEmbed = new Discord.MessageEmbed()
     .setTitle(`${member.displayName} Has Been Unmuted!`)
     .setColor(0x00a5ff)
-    .setFooter("IAT Bot")
+    .setFooter(message.guild.me.displayName)
     .setTimestamp()
     message.channel.send(mEmbed);
     }, ms(time));

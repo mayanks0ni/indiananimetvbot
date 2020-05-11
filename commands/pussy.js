@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
           .setImage(response.body.message)
           .setTimestamp()
           .setColor("RANDOM")
-          .setFooter('IAT Bot')
+          .setFooter(message.guild.me.displayName)
         message.channel.send(pussy);
       });
   } else {
@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
       .setTitle('This channel is not a NSFW channel!!')
       .setColor(0xfa0202)
       .setTimestamp()
-      .setFooter('IAT Bot')
+      .setFooter(message.guild.me.displayName)
     message.channel.send(notnsfw);
   }
 };

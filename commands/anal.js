@@ -1,5 +1,6 @@
 const Discord = module.require("discord.js");
 const superagent = require('superagent');
+const info = require("../info.json");
 
 module.exports.run = async (bot, message, args) => {
   if (message.channel.nsfw === true) {
@@ -11,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
           .setImage(response.body.message)
           .setTimestamp()
           .setColor("RANDOM")
-          .setFooter('IAT Bot')
+          .setFooter(message.guild.me.displayName)
         message.channel.send(anal);
       });
   } else {
@@ -19,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
       .setTitle('**This channel is not a NSFW channel!!**')
       .setTimestamp()
       .setColor(0xfa0202)
-      .setFooter('IAT Bot')
+      .setFooter(message.guild.me.displayName)
     message.channel.send(notnsfw);
   }
 };
@@ -27,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
   name: "anal",
   description: "A Commamd To View Anal Images!",
-  usage: "+anal",
+  usage: `${info.prefix}anal`,
   accessableby: "Members",
   aliases: ["an"]
 }

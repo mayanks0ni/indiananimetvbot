@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!message.channel.nsfw) {
 		const notnsfw = new Discord.MessageEmbed()
 			.setTitle('**This is not a NSFW Channel!**')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setTimestamp()
 			.setColor(0xff0000)
 		message.channel.send(notnsfw);
@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 			.setTitle(`Boobs Image For ${message.author.username}!`)
 			.setImage(body.url)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(boobembed);
 	}
 

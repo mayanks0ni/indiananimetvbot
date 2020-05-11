@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!men1) {
 		const nomen = new Discord.MessageEmbed()
 			.setTitle('Please mention someone to hug!')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setTimestamp()
 			.setColor(0xff0000)
 		message.channel.send(nomen)
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 			.setTitle(`${message.author.username} hugs ${men1.username}! So cute!`)
 			.setImage(body.url)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(hugembed);
 	}
 };

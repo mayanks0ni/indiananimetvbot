@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) {
     const nodelperms = new Discord.MessageEmbed()
       .setAuthor('You Do Not Have Enough Permissions!!')
-      .setFooter('IAT Bot')
+      .setFooter(message.guild.me.displayName)
       .setColor(0xff0000)
       .setTimestamp()
     message.channel.send(nodelperms);

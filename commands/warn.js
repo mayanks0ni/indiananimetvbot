@@ -7,11 +7,11 @@ module.exports.run = async (bot, message, args) => {
             console.error(err);
         }
     });
-    if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle("You Don\'t Have Enough Permissions!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+    if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle("You Don\'t Have Enough Permissions!").setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
  const user = message.mentions.users.first();
  let reason = args.slice(2).join(" ");
- if(!user || !reason) return message.channel.send(new Discord.MessageEmbed().setTitle("This Command Is Used Like This `+warn [user] [reason]`!").setFooter("IAT Bot").setTimestamp().setColor(0xff0000));
- if(message.mentions.members.first().permissions.has("ADMINISTRATOR" || "MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle("You Can't Warn A Moderator/Admin!").setFooter("IAT Bot").setTimestamp().setColor(0xff0000));
+ if(!user || !reason) return message.channel.send(new Discord.MessageEmbed().setTitle("This Command Is Used Like This `+warn [user] [reason]`!").setFooter(message.guild.me.displayName).setTimestamp().setColor(0xff0000));
+ if(message.mentions.members.first().permissions.has("ADMINISTRATOR" || "MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle("You Can't Warn A Moderator/Admin!").setFooter(message.guild.me.displayName).setTimestamp().setColor(0xff0000));
  let warnChannel = message.guild.channels.cache.find(c => c.name === "〢warn-log");
  message.delete();
  const warnEmbed = new Discord.MessageEmbed()
@@ -21,10 +21,11 @@ module.exports.run = async (bot, message, args) => {
  .addField(`**Reason**`, `${reason}`)
  .setThumbnail(bot.user.displayAvatarURL())
  .setColor("YELLOW")
- .setFooter("IAT Bot")
+ .setFooter(message.guild.me.displayName)
  .setTimestamp()
 
  message.channel.send(warnEmbed).then(m => m.delete({ timeout: 5000 }))
+ warnChannel.send(warnEmbed);
  user.send(warnEmbed);
  var d = new Date()
  var date = d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();

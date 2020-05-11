@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 	message.delete()
-	if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle('You Don\'t Have Enough Permissions!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send(new Discord.MessageEmbed().setTitle('You Don\'t Have Enough Permissions!').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 
 	let rolename;
 	rolename = args.slice(1).join(" ")
@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 		const nomenrole = new Discord.MessageEmbed()
 			.setTitle('**You didn\'t wrote the roles name!**')
 			.setColor(0xff0000)
-			.setFooter("IAT Bot")
+			.setFooter(message.guild.me.displayName)
 			.setTimestamp()
 		message.channel.send(nomenrole);
 	} else {

@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!text) {
 		const notext = new Discord.MessageEmbed()
 			.setTitle('Please Provide Some Text!')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setColor(0xff0000)
 			.setTimestamp()
 		message.channel.send(notext);
@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
 			.setColor("RANDOM")
 			.setImage(body.message)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(tweetembed);
 	}
 };

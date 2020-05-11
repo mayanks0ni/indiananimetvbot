@@ -36,8 +36,8 @@ if(!serverQueue) {
       volume: 5,
       playing: true
     };
-    message.channel.send(new Discord.MessageEmbed().setTitle(`✅ Connected To \`${message.member.voice.channel.name}\`! ✅`).setColor(0xff008b).setFooter("IAT Bot").setTimestamp());
-  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).setColor("YELLOW").setFooter("IAT Bot").setTimestamp());
+    message.channel.send(new Discord.MessageEmbed().setTitle(`✅ Connected To \`${message.member.voice.channel.name}\`! ✅`).setColor(0xff008b).setFooter(message.guild.me.displayName).setTimestamp());
+  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).setColor("YELLOW").setFooter(message.guild.me.displayName).setTimestamp());
   queueContruct.songs.push(queueSong)
   queue.set(message.guild.id, queueContruct);
   try{
@@ -51,17 +51,17 @@ if(!serverQueue) {
    message.channel.send(`\`${err}\``);
  }
 } else {
-  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).setColor("YELLOW").setFooter("IAT Bot").setTimestamp());
+  message.channel.send(new Discord.MessageEmbed().setAuthor(`Song Queued`, `https://cdn.discordapp.com/attachments/564520348821749766/696334217205907516/giphy.gif`).addField("**Queued**", `**[${result.first.title}](${result.first.url})**`).setColor("YELLOW").setFooter(message.guild.me.displayName).setTimestamp());
   serverQueue.songs.push(queueSong);
     }
     } else {
-      return message.channel.send(new Discord.MessageEmbed().setTitle("You Need To Be In A Voice Channel To Use That Command!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+      return message.channel.send(new Discord.MessageEmbed().setTitle("You Need To Be In A Voice Channel To Use That Command!").setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
     }
 }
 module.exports.config = {
   name: "play",
   description: "A Command To Play Songs!",
-  usage: "+play [name/url]",
+  usage: "+play [name]",
   accessableby: "Members",
   aliases: ["p"]
 }

@@ -5,8 +5,9 @@ module.exports.run = async (bot, message, args) => {
     const canvas = Canvas.createCanvas(720, 1280);
     const ctx = canvas.getContext("2d");
   const user = message.mentions.users.first();
-if(!user) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used \`+rip [user]\`!").setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
   const user2 = user.displayAvatarURL({format: 'png', dynamic: true, size: 1024})
+
+  if(!user2) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`).setTitle("This Command Is Used \`+rip [user]\`!").setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 
    const background = await Canvas.loadImage(`https://cdn.discordapp.com/attachments/564520348821749766/687972262510329856/rest-in-peace-rip-headstone-blank-template-imgflip-53245711.png`)
    
@@ -15,13 +16,22 @@ if(!user) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${me
    ctx.strokeStyle = '#000000';
    ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
+   
+
    ctx.font = '65px Segoe Print'
    ctx.fillText("2020-2021", 160, 1050)
 
    const userpfp = await Canvas.loadImage(user2)
    ctx.drawImage(userpfp, 200,500,300, 300);
    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'rip.png')
-   message.channel.send(attachment);
+   const ripembed = new Discord.MessageEmbed()
+   .setTitle(`RIP ${user.username}`)
+   .attachFiles("attachment://attachment")
+   .setImage(attachment)
+   .setColor("RANDOM")
+   .setFooter(message.guild.me.displayName)
+   .setTimestamp()
+   message.channel.send(ripembed);
 };
 
 module.exports.config = {
