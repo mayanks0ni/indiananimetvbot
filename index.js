@@ -46,6 +46,10 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
+const db = new sqlite.Database("./database/xp.db", err => {
+  if(err) console.error(err);
+});
+
 bot.on("ready", () => {
   console.log("The bot is online!");
   bot.user.setActivity("+help", { type: "LISTENING" });
@@ -128,6 +132,27 @@ bot.on("message", async message => {
       res = await fetch(url).then(url => url.json());
       message.channel.send(res.response);
     } else {
+      let addXp = Math.floor(Math.random() * 7) + 8;
+    db.get(`SELECT * FROM xp WHERE userId = '${message.author.id}'`, (err, rows)=>{
+      if(err){
+        console.error(err);
+        return;
+      }
+      if(rows === undefined){
+       return db.all(`INSERT INTO xp(userId, xp, level) VALUES('${message.author.id}', 0, "Newbie")`)
+      }else{
+        db.all(`UPDATE xp SET xp = xp + '${addXp}' WHERE userId = '${message.author.id}'`);
+	}
+	if(rows.xp > 1000){
+        db.all(`UPDATE xp SET level = "Rookie" WHERE userId = '${message.author.id}'`);
+	  }
+      if(rows.xp > 5000){
+		db.all(`UPDATE xp SET level = "The Insider" WHERE userId = '${message.author.id}'`);
+	  }
+	  if(rows.xp > 10000){
+		db.all(`UPDATE xp SET level = "The Elite" WHERE userId = '${message.author.id}'`);
+	  }
+    });
       let msgArray = message.content.split(/\s+/g);
       let cmd = msgArray[0];
       let args = message.content.substring(PREFIX.length).split(" ");
