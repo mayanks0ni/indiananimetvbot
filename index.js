@@ -3,10 +3,11 @@ const bot = new Discord.Client();
 const fs = require("fs");
 const Canvas = require("canvas");
 const fetch = require("node-fetch");
-const PREFIX = "+";
+const PREFIX = "i!";
 const queue = new Map();
 const ytdl = require("ytdl-core");
 const server = require("./server.js");
+const sqlite = require("sqlite3");
 const opts = {
   format: "bestaudio/best",
   outtmpl: "%(extractor)s-%(id)s-%(title)s.%(ext)s",
@@ -52,7 +53,7 @@ const db = new sqlite.Database("./database/xp.db", err => {
 
 bot.on("ready", () => {
   console.log("The bot is online!");
-  bot.user.setActivity("+help", { type: "LISTENING" });
+  bot.user.setActivity("i!help", { type: "LISTENING" });
 });
 
 bot.on("guildMemberAdd", async member => {
