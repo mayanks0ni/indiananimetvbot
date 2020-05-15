@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 		.setTitle('Random Fact!')
 		.setDescription(body.fact)
 		.setTimestamp()
-		.setFooter('IAT Bot')
+		.setFooter(message.guild.me.displayName)
 	message.channel.send(factembed);
 };
 

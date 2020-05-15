@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 		.setTitle(`Trash ${men.username}!`)
 		.setImage(body.message)
 		.setTimestamp()
-		.setFooter('IAT Bot')
+		.setFooter(message.guild.me.displayName)
 	message.channel.send(trashembed);
 };
 

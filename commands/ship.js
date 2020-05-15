@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!user1 || !user2) {
 		const nousers = new Discord.MessageEmbed()
 			.setTitle('This Command Is Used LIke This \`+ship [user 1] [user 2]\`')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setColor(0xff0000)
 			.setTimestamp()
 		message.channel.send(nousers);
@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 			.setColor("RANDOM")
 			.setImage(body.message)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(shipembed);
 	}
 };

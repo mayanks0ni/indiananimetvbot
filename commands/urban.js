@@ -2,11 +2,11 @@ const Discord = require("discord.js");
 const urban = require("urban");
 
 module.exports.run = async (bot, message, args) => {
-    if (args.length < 1) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+urban [text]\`').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+    if (args.length < 1) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+urban [text]\`').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
     let XD = args.slice(1).join(" ");
 
     urban(XD).first(json => {
-        if (!json) return message.channel.send(new Discord.MessageEmbed().setTitle('No Results Found For That Word!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+        if (!json) return message.channel.send(new Discord.MessageEmbed().setTitle('No Results Found For That Word!').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 
         let urbEmbed = new Discord.MessageEmbed()
             .setColor("00ff00")

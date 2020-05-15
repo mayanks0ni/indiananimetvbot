@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!uname) {
 		const nouname = new Discord.MessageEmbed()
 			.setTitle('Please Provide a Username!')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setColor(0xff0000)
 			.setTimestamp()
 		message.channel.send(nouname);
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 			.setColor("RANDOM")
 			.setImage(body.message)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(captchaembed);
 	}
 };

@@ -1,10 +1,10 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	if (!message.member.permissions.has("KICK_MEMBERS")) return message.channel.send(new Discord.MessageEmbed().setTitle('You Don\'t Have Enough Permissions!').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	if (!message.member.permissions.has("KICK_MEMBERS")) return message.channel.send(new Discord.MessageEmbed().setTitle('You Don\'t Have Enough Permissions!').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 	const user1 = message.mentions.users.first()
 	const reason = args.slice(2).join(" ");
-	if (!user1 || !reason) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+kick [user] [reason]\`').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	if (!user1 || !reason) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+kick [user] [reason]\`').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 	if (user1) {
 		const member1 = message.guild.member(user1);
 
@@ -16,14 +16,14 @@ module.exports.run = async (bot, message, args) => {
 					.addField(`**Reason**`, `${reason}`)
 					.addField("**Moderator**", `${message.author.tag}`)
 					.setColor(0x00fa21)
-					.setFooter("IAT Bot")
+					.setFooter(message.guild.me.displayName)
 					.setTimestamp()
 				 message.channel.send(kickembed)
 			}).catch(err => {
 				const error = new Discord.MessageEmbed()
 					.setDescription('The user cannot be kicked due to no permissions or due to mine role is below that members role!')
 					.setColor(0xfa0000)
-					.setFooter("IAT Bot")
+					.setFooter(message.guild.me.displayName)
 					.setTimestamp()
 				message.channel.send(error);
 				console.error(err);
@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
 			const errembed = new Discord.MessageEmbed()
 				.setTitle('The Mentioned User Is Not In The Guild!')
 				.setColor(0xff0000)
-				.setFooter("IAT Bot")
+				.setFooter(message.guild.me.displayName)
 				.setTimestamp()
 			message.channel.send(errembed);
 		}

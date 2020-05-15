@@ -4,8 +4,7 @@
   "description": "Being tested",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "!ping"
+    "start": "node index.js"
   },
   "author": "SpideY",
   "license": "ISC",
@@ -26,9 +25,12 @@
     "node-fetch": "^2.6.0",
     "node-gyp": "^6.1.0",
     "opusscript": "0.0.7",
+    "parse-ms": "^2.1.0",
     "random-puppy": "^1.1.0",
     "sqlite3": "^4.1.1",
     "superagent": "^5.2.2",
+    "transliteration": "^2.1.9",
+    "unidecode": "^0.1.8",
     "urban": "^0.3.2",
     "ytdl-core": "^2.0.1",
     "ytsearcher": "^1.2.2"

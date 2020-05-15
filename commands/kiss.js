@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
 	if (!men2) {
 		const nomen1 = new Discord.MessageEmbed()
 			.setTitle('Please mention someone to kiss!')
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 			.setTimestamp()
 			.setColor(0xff0000)
 		message.channel.send(nomen1)
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
 			.setTitle(`${message.author.username} kissed ${men2.username}! Kawaii!`)
 			.setImage(body.url)
 			.setTimestamp()
-			.setFooter('IAT Bot')
+			.setFooter(message.guild.me.displayName)
 		message.channel.send(kissembed);
 	}
 

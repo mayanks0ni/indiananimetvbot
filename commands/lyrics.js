@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
         const noname = new Discord.MessageEmbed()
             .setTitle("You Need To Search For A Song!!")
             .setColor(0xff0000)
-            .setFooter("IAT Bot")
+            .setFooter(message.guild.me.displayName)
             .setTimestamp()
         message.channel.send(noname);
     } else {

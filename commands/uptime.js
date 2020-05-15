@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
     let uptimeembed = new Discord.MessageEmbed()
         .setColor("GOLD")
         .setTitle(`Uptime - ${uptime}`)
-        .setFooter("IAT Bot")
+        .setFooter(message.guild.me.displayName)
         .setTimestamp()
     message.channel.send(uptimeembed);
 };

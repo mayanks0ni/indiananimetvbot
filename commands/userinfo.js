@@ -11,7 +11,6 @@ const status = {
 module.exports.run = async (bot, message, args) => {
     var permissions = [];
     var acknowledgements = 'None';
-
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[1]) || message.member;
 
     if (member.permissions.has("KICK_MEMBERS")) {
@@ -100,6 +99,9 @@ module.exports.run = async (bot, message, args) => {
 
     if (`<@${member.user.id}>` == message.guild.owner) {
         acknowledgements = 'Server Owner';
+    }
+    if(permissions.length > 6){
+
     }
 
     const embed = new Discord.MessageEmbed()

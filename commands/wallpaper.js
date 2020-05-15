@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 		.setColor("RANDOM")
 		.setImage(body.url)
 		.setTimestamp()
-		.setFooter('IAT Bot')
+		.setFooter(message.guild.me.displayName)
 	message.channel.send(wlembed);
 
 };

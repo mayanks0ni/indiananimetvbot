@@ -3,7 +3,7 @@ const Discord = module.require("discord.js");
 module.exports.run = async (bot, message, args) => {
 	message.delete()
 	let suggestion = args.slice(1).join(" ");
-	if (!suggestion) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+suggest [message]\`').setColor(0xff0000).setFooter("IAT Bot").setTimestamp());
+	if (!suggestion) return message.channel.send(new Discord.MessageEmbed().setTitle('This Command Is Used Like This \`+suggest [message]\`').setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
 	
 	const suggested = new Discord.MessageEmbed()
 		.setTitle('Suggestion')
