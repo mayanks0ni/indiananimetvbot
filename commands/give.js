@@ -1,5 +1,5 @@
 const Discord = module.require("discord.js");
-const sqlite = require("sqlite3").verbose();
+const sqlite = require("sqlite3");
 
 module.exports.run = async (bot, message, args) => {
   const db = new sqlite.Database("./database/userdb1.db", err => {
@@ -19,6 +19,7 @@ module.exports.run = async (bot, message, args) => {
   if(isNaN(amount)) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`, message.author.displayAvatarURL()).setTitle("The Amount Should Be A Number!").setFooter(message.guild.me.displayName).setTimestamp().setColor(0xff0000));
   if(amount < 1) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`, message.author.displayAvatarURL()).setTitle("The Amount Should Be Greater Than 0!").setFooter(message.guild.me.displayName).setTimestamp().setColor(0xff0000));
   if(amount.startsWith("-")) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`, message.author.displayAvatarURL()).setTitle("Invalid Arguement!").setFooter(message.guild.me.displayName).setTimestamp().setColor(0xff0000));
+  if(amount != Math.floor(amount)) return message.channel.send(new Discord.MessageEmbed().setAuthor(`${message.author.tag}`, message.author.displayAvatarURL()).setDescription("**The Amount Should Be A Whole Number Greater Than 0!**").setColor(0xff0000).setFooter(message.guild.me.displayName).setTimestamp());
   let sender = message.author.id;
   let mention = user.id;
 let senderData = {};

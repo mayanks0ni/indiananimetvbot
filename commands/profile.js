@@ -6,6 +6,7 @@ const tr = require("transliteration").transliterate;
 
 module.exports.run = async (bot, message, args) => {
     const diamond = bot.emojis.cache.get("706515264451117109");
+  Canvas.registerFont("./assets/LEMONMILK-BoldItalic.otf", {family: "lemon"})
     const canvas = Canvas.createCanvas(1440, 1080);
     const ctx = canvas.getContext("2d");
   const user = message.author;
@@ -41,19 +42,19 @@ module.exports.run = async (bot, message, args) => {
               ctx.strokeStyle = '#faf9f9';
               ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
-              ctx.font = '65px Impact'
+              ctx.font = '62px lemon'
               ctx.fillStyle = '#ffffff'
               ctx.fillText(`${name}`, 376, 296)
 
-              ctx.font = '65px Impact'
+              ctx.font = '62px lemon'
               ctx.fillStyle = '#ffffff'
               ctx.fillText(`${rows.xp}`, 320, 447)
 
-              ctx.font = '65px Impact'
+              ctx.font = '62px lemon'
               ctx.fillStyle = '#ffffff'
               ctx.fillText(`${senderData.bal}`, 499, 600)
 
-              ctx.font = '65px Impact'
+              ctx.font = '62px lemon'
               ctx.fillStyle = '#ffffff'
               ctx.fillText(`${rows.level}`, 381, 754)
 
